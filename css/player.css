@@ -1,0 +1,133 @@
+/****************************************************************
+	Circle Music Player
+*****************************************************************/
+
+
+body {
+	background: #dddddd;
+	font-family: "helvetica", arial, serif;
+}
+
+h1 {
+	text-align: center;
+	text-shadow: 0px 1px 1px #fff;
+	font-size: 2.8em;
+	color: #CC6724;
+	text-transform: uppercase;
+	letter-spacing: -2px;
+}
+
+h1 span {
+	color: #444444;
+	font-size: 0.6em;
+	letter-spacing: -1px;
+}
+
+.background-shadow {
+	width: 250px;
+	height: 250px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	background: #fff;
+	margin: -125px 0 0 -125px;
+	z-index: -1;
+	border-radius: 50%;
+	-webkit-filter: blur(15px);
+    filter: blur(15px);
+}
+
+
+/*
+	Layouts
+ */
+.player-holder {
+	width: 200px;
+	height: 200px;
+	background: #F5BE3D;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: -110px 0 0 -110px;
+	border-radius: 50%;
+	padding: 10px;
+	z-index: 10;
+	box-shadow: 0px 1px 1px #fff;
+}
+
+.player-background {
+	width: 200px;
+	height: 200px;
+	background: #DDDDDD;
+	border-radius: 50%;
+}
+
+/*
+	Animations
+ */
+
+
+/*
+	Controls
+ */
+.play {
+	width: 160px;
+	height: 160px;
+	position: absolute;
+	top: 30px;
+	left: 30px;
+	background: #ffffff;
+	border-radius: 50%;
+	border: 1px solid #F5BE3D;
+	-webkit-transition: all 0.5s ease-in-out;
+	-moz-transition: all 0.5s ease-in-out;
+	-ms-transition: all 0.5s ease-in-out;
+	-o-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
+}
+
+.play:hover {
+	-webkit-transition: all 0.5s ease-in-out;
+	-moz-transition: all 0.5s ease-in-out;
+	-ms-transition: all 0.5s ease-in-out;
+	-o-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
+	box-shadow: 0px 0px 50px #dddddd inset;
+}
+
+.play span {
+	text-indent: -9999px;
+	display: block;
+	overflow: hidden;
+    width: 0;
+    height: 0;
+    border: solid 30px;
+	border-color: transparent transparent transparent #E3BA56;
+	box-shadow: 0 1px 1px #666 inset;
+	position: absolute;
+	top: 50px;
+	left: 70px;
+}
+
+.play:hover span {
+	-webkit-transition: all 0.5s ease-in-out;
+	-moz-transition: all 0.5s ease-in-out;
+	-ms-transition: all 0.5s ease-in-out;
+	-o-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
+	border-color: transparent transparent transparent #CAA54E;
+}
+
+.player-shadow {
+	position: absolute;
+	bottom: -5px;
+	left: 50%;
+	background: #000;
+	margin: 0 0 0 -40%;
+	height: 8px;
+	width: 80%;
+	z-index: 5;
+	border-radius: 50%;
+	-webkit-filter: blur(10px);
+    filter: blur(10px);
+}
