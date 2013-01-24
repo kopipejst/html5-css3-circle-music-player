@@ -3,7 +3,7 @@
 <head>
 	<title>Html5/Css3 Fancy Circle Music Player</title>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
-
+	<script type="text/javascript" src="js/player.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/player.css">
 </head>
 <body>
@@ -19,6 +19,8 @@
 		<div class="player-shadow"></div>
 	</div>
 
+	<audio id="player"></audio>
+	<input id="volume" type="range" min="0" max="1" step= "0.1" value="0.8" />
 
 	<div class="background-shadow"></div>
 </body>
