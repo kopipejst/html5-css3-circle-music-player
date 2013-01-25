@@ -14,7 +14,38 @@ $(document).ready( function () {
 
 	$('#volume').change ( function () {
 		player.volume = $(this).val();
+		$(this).data('val', $(this).val());
+		if ( player.volume === 0 ) {
+			mute();
+		} else {
+			unmute();
+		}
 	});
+
+	$('#mute').click ( function () {
+		if ( player.volume === 0 ) {
+			unmute();
+			var previousVolume = $('#volume').data('val');
+			if (previousVolume == 0 || !previousVolume) {
+				$('#volume').data('val', '0.8');
+			}
+			player.volume = $('#volume').data('val');
+			$('#volume').val(player.volume);
+		} else {
+			mute();
+			$('#volume').val(0);
+			player.volume = 0;
+		}
+	});
+
+
+	function mute () {
+		$('#mute').removeClass('normal').addClass('mute');
+	}
+
+	function unmute () {
+		$('#mute').removeClass('mute').addClass('normal');
+	}	
 
 	$('#position').change ( function () {
 		var position = player.duration * $(this).val() / 100;
