@@ -16,6 +16,10 @@ $(document).ready( function () {
 					);
 
 
+	$('.volume-show').click ( function () {
+		$('.volume-holder').show();
+	});
+
 	$('#volume').change ( function () {
 		player.volume = $(this).val();
 		$(this).data('val', $(this).val());
