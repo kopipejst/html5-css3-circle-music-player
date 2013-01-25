@@ -168,6 +168,14 @@ h1 span {
 	border: 2px solid #F5BE3D;
 }
 
+.volume-show {
+	font-size: 32px;
+	color: #999999;
+	position: absolute;
+	top: 11px;
+	left: 11px;
+}
+
 .volume-holder {
 	-webkit-transform: rotate(-90deg);
 	position: absolute;
@@ -178,6 +186,7 @@ h1 span {
 	border-radius: 20px;
 	height: 34px;
 	width: 220px;
+	display: none;
 }
 
 .volume-icon {
