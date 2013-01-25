@@ -1,6 +1,10 @@
 $(document).ready( function () {
-	var player = $('#player').get(0);
-		player.setAttribute('src', playlist[1].url);
+
+	var player = $('#player').get(0),
+		playlistPosition = 0;
+
+
+		player.setAttribute('src', playlist[playlistPosition].url);
 		player.volume= "0.8";
 
 	$('.play').toggle ( function () {
@@ -59,9 +63,22 @@ $(document).ready( function () {
 	});
 
 	player.addEventListener('progress', function(evt) {
-		var loaded = player.buffered.end(0) / player.duration * 100;
-		$("#loaded").css("width", loaded + "%");
+		try {
+			var loaded = player.buffered.end(0) / player.duration * 100;
+			$("#loaded").css("width", loaded + "%");
+		} catch (e) {
+			console.log('buffer error');
+		}
 	});
+
+	player.addEventListener('ended', function(evt) {
+		playlistPosition++;
+		if (playlistPosition >= playlist.length) {
+			playlistPosition = 0;
+		}
+		player.setAttribute('src', playlist[playlistPosition].url);
+		player.play();
+	});	
 
 });
 
