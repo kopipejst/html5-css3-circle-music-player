@@ -149,6 +149,24 @@ h1 span {
 	width: 220px;
 }
 
+.volume-icon {
+	-webkit-transform: rotate(90deg);
+	height: 20px;
+	width: 20px;
+	position: absolute;
+	bottom: 7px;
+	left: 13px;
+	text-indent: -9999px;
+}
+
+.normal {
+	background: url('../img/volume-bar-small.png') bottom center no-repeat;
+}
+
+.mute {
+	background: url('../img/volume-bar-small-mute.png') bottom center no-repeat;
+}
+
 .volume {
 	-webkit-appearance: none;
 	width: 160px;
@@ -169,8 +187,8 @@ input[type='range']::-webkit-slider-thumb {
     background-color: #f5f5f5;
 	background-repeat: repeat-x;
 	background: -webkit-linear-gradient(top, #dddddd, #ffffff, #dddddd);
-    height: 14px;
-    width: 20px;
+    height: 16px;
+    width: 22px;
     border: 1px solid #ffffff;
     box-shadow: 0px 0px 2px #666666;
     border-radius: 3px;
