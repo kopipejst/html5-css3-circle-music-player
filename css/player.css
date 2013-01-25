@@ -33,6 +33,7 @@
 
 .icon-volume-off-1:before { content: '\e801'; } /* '' */
 .icon-volume-up-1:before { content: '\e800'; } /* '' */
+.icon-note:before { content: '\266a'; } /* '♪' */
 
 body {
 	background: #dddddd;
@@ -176,10 +177,18 @@ h1 span {
 	left: 11px;
 }
 
+.playlist-show {
+	font-size: 32px;
+	color: #999999;
+	position: absolute;
+	top: 11px;
+	right: 15px;
+}
+
 .volume-holder {
 	-webkit-transform: rotate(-90deg);
 	position: absolute;
-	left: -80px;
+	left: -79px;
 	top: 10px;
 	background: #ffffff;
 	box-shadow: 0px 0px 4px #999;
