@@ -1,5 +1,5 @@
 /****************************************************************
-	Circle Music Player
+    Circle Music Player
 *****************************************************************/
 @font-face {
   font-family: 'fontello';
@@ -18,224 +18,206 @@
   display: inline-block;
   text-decoration: inherit;
   margin-right: 0.2em;
+  margin-left: 0.2em;
   text-align: center;
   opacity: 0.8;
-/* fix buttons height, for twitter bootstrap */
   line-height: 1em;
-/* Animation center compensation - magrins should be symmetric */
-/* remove if not needed */
-  margin-left: 0.2em;
-/* you can be more comfortable with increased icons size */
-/* font-size: 120%; */
-/* Uncomment for 3D effect */
-/* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
 }
 
+.icon-pause:before { content: '\2389'; } /* '⎉' */
+.icon-play:before { content: '\25b6'; } /* '▶' */
+.icon-note:before { content: '\266a'; } /* '♪' */
 .icon-volume-off-1:before { content: '\e801'; } /* '' */
 .icon-volume-up-1:before { content: '\e800'; } /* '' */
-.icon-note:before { content: '\266a'; } /* '♪' */
 
 body {
-	background: #dddddd;
-	font-family: "helvetica", arial, serif;
+    background: #dddddd;
+    font-family: "helvetica", arial, serif;
 }
 
 h1 {
-	text-align: center;
-	text-shadow: 0px 1px 1px #fff;
-	font-size: 2.8em;
-	color: #CC6724;
-	text-transform: uppercase;
-	letter-spacing: -2px;
+    text-align: center;
+    font-size: 2.8em;
+    color: #CC6724;
+    text-transform: uppercase;
+    letter-spacing: -2px;
 }
 
 h1 span {
-	color: #444444;
-	font-size: 0.6em;
-	letter-spacing: -1px;
-}
-
-.background-shadow {
-	width: 250px;
-	height: 250px;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	background: #fff;
-	margin: -125px 0 0 -125px;
-	z-index: -1;
-	border-radius: 50%;
-	-webkit-filter: blur(15px);
-    filter: blur(15px);
+    color: #444444;
+    font-size: 0.6em;
+    letter-spacing: -1px;
 }
 
 
 /*
-	Layouts
+    Layouts
  */
 .player-holder {
-	width: 210px;
-	height: 210px;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	margin: -110px 0 0 -110px;
+    width: 210px;
+    height: 210px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -110px 0 0 -110px;
+    z-index: 50;
 }
 
 .player {
-	width: 190px;
-	height: 190px;
-	position: relative;
-	background: #F5BE3D;
-	border-radius: 50%;
-	padding: 10px;
-	z-index: 10;
-	box-shadow: 0px 1px 1px #fff;
+    width: 190px;
+    height: 190px;
+    position: relative;
+    background: #F5BE3D;
+    border-radius: 50%;
+    padding: 10px;
+    z-index: 40;
+    box-shadow: 0px 1px 1px #fff;
 }
 
 .player-background {
-	width: 190px;
-	height: 190px;
-	background: #DDDDDD;
-	border-radius: 50%;
+    width: 190px;
+    height: 190px;
+    background: #DDDDDD;
+    border-radius: 50%;
 }
 
 /*
-	Animations
+    Animations
  */
 
 
 /*
-	Controls
+    Controls
  */
-.play {
-	width: 160px;
-	height: 160px;
-	position: absolute;
-	top: 25px;
-	left: 25px;
-	background: #ffffff;
-	border-radius: 50%;
-	border: 1px solid #F5BE3D;
-	-webkit-transition: all 0.5s ease-in-out;
-	-moz-transition: all 0.5s ease-in-out;
-	-ms-transition: all 0.5s ease-in-out;
-	-o-transition: all 0.5s ease-in-out;
-	transition: all 0.5s ease-in-out;
+.action {
+    width: 160px;
+    height: 160px;
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    background: #ffffff;
+    border-radius: 50%;
+    border: 1px solid #F5BE3D;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
 }
 
-.play:hover {
-	-webkit-transition: all 0.5s ease-in-out;
-	-moz-transition: all 0.5s ease-in-out;
-	-ms-transition: all 0.5s ease-in-out;
-	-o-transition: all 0.5s ease-in-out;
-	transition: all 0.5s ease-in-out;
-	box-shadow: 0px 0px 50px #dddddd inset;
+.action:hover {
+    box-shadow: 0px 0px 50px #dddddd inset;
 }
 
-.play span {
-	text-indent: -9999px;
-	display: block;
-	overflow: hidden;
-    width: 0;
-    height: 0;
-    border: solid 30px;
-	border-color: transparent transparent transparent #E3BA56;
-	box-shadow: 0 1px 1px #666 inset;
-	position: absolute;
-	top: 50px;
-	left: 70px;
+.action:focus {
+    box-shadow: 0px 0px 10px #dddddd inset;
 }
 
-.play:hover span {
-	-webkit-transition: all 0.5s ease-in-out;
-	-moz-transition: all 0.5s ease-in-out;
-	-ms-transition: all 0.5s ease-in-out;
-	-o-transition: all 0.5s ease-in-out;
-	transition: all 0.5s ease-in-out;
-	border-color: transparent transparent transparent #CAA54E;
+.icon-play,
+.icon-pause {
+    display: block;
+    overflow: hidden;
+    position: absolute;
+    top: 27%;
+    left: 50px;
+    font-size: 4em;
+    color: #999999;
+}
+.icon-play {
+    margin-left: 0.1em;
+}
+
+.icon-play:hover,
+.icon-pause:hover {
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+    border-color: transparent transparent transparent #CAA54E;
 }
 
 .controls {
-	position: absolute;
-	top: 44%;
-	height: 60px;
-	width: 330px;
-	left: -60px;
-	border-radius: 30px;
-	margin-top: -20px;
-	background: #ffffff;
-	z-index: 1;
-	border: 2px solid #F5BE3D;
+    position: absolute;
+    top: 44%;
+    height: 60px;
+    width: 330px;
+    left: -60px;
+    border-radius: 30px;
+    margin-top: -20px;
+    background: #ffffff;
+    z-index: 30;
+    border: 2px solid #F5BE3D;
 }
 
 .volume-show {
-	font-size: 32px;
-	color: #999999;
-	position: absolute;
-	top: 11px;
-	left: 11px;
+    font-size: 32px;
+    color: #999999;
+    position: absolute;
+    top: 11px;
+    left: 11px;
 }
 
 .playlist-show {
-	font-size: 32px;
-	color: #999999;
-	position: absolute;
-	top: 11px;
-	right: 15px;
+    font-size: 32px;
+    color: #999999;
+    position: absolute;
+    top: 11px;
+    right: 15px;
 }
 
 .volume-holder {
-	-webkit-transform: rotate(-90deg);
-	position: absolute;
-	left: -79px;
-	top: 10px;
-	background: #ffffff;
-	box-shadow: 0px 0px 4px #999;
-	border-radius: 20px;
-	height: 34px;
-	width: 220px;
-	display: none;
+    -webkit-transform: rotate(-90deg);
+    position: absolute;
+    left: -79px;
+    top: 10px;
+    background: #ffffff;
+    box-shadow: 0px 0px 4px #999;
+    border-radius: 20px;
+    height: 34px;
+    width: 220px;
+    display: none;
+    z-index: 60;
 }
 
 .volume-icon {
-	-webkit-transform: rotate(90deg);
-	height: 23px;
-	width: 35px;
-	position: absolute;
-	bottom: 5px;
-	left: 6px;
-	font-size: 22px;
-	color: #999999;
-	text-shadow: 0px 1px 1px #fff;
-	text-align: center;
+    -webkit-transform: rotate(90deg);
+    height: 23px;
+    width: 35px;
+    position: absolute;
+    bottom: 5px;
+    left: 6px;
+    font-size: 22px;
+    color: #999999;
+    text-shadow: 0px 1px 1px #fff;
+    text-align: center;
 }
 
 .mute .icon-volume-up-1,
 .normal .icon-volume-off-1 {
-	display: none;
+    display: none;
 }
 
 .volume {
-	-webkit-appearance: none;
-	width: 160px;
-	height: 8px;
-	position: absolute;
-	border: 1px solid #ccc;
-	top: 10px;
-	left: 42px;
-	border-radius: 5px;
-	background-color: #f5f5f5;
-	background-repeat: repeat-x;
-	background: -webkit-linear-gradient(right, #CE6924, #FFCC00, #ffffff);
-	cursor: pointer;
+    -webkit-appearance: none;
+    width: 160px;
+    height: 8px;
+    position: absolute;
+    border: 1px solid #ccc;
+    top: 10px;
+    left: 42px;
+    border-radius: 5px;
+    background-color: #f5f5f5;
+    background-repeat: repeat-x;
+    background: -webkit-linear-gradient(right, #CE6924, #FFCC00, #ffffff);
+    cursor: pointer;
 }
 
 input[type='range']::-webkit-slider-thumb {
     -webkit-appearance: none !important;
     background-color: #f5f5f5;
-	background-repeat: repeat-x;
-	background: -webkit-linear-gradient(top, #dddddd, #ffffff, #dddddd);
+    background-repeat: repeat-x;
+    background: -webkit-linear-gradient(top, #dddddd, #ffffff, #dddddd);
     height: 16px;
     width: 22px;
     border: 1px solid #ffffff;
@@ -245,20 +227,95 @@ input[type='range']::-webkit-slider-thumb {
 }
 
 
+.playlist-holder {
+    position: absolute;
+    right: -189px;
+    top: -83px;
+    background: #ffffff;
+    box-shadow: 0px 0px 4px #999;
+    border-radius: 5px;
+    height: 220px;
+    width: 240px;
+    z-index: 60;
+}
 
+.playlist-header h4 {
+    color: #333333;
+    margin: 14px 15px 12px 15px;
+}
 
+ul.playlist {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+    overflow-y: auto;
+    width: 218px;
+    height: 165px;
+    margin: 10px;
+    font-size: 13px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    position: absolute;
+    bottom: 0px;
+    background: #ededed;
+    box-shadow: 0px 1px 1px #ccc inset;
+}
 
+ul.playlist li {
+    border-bottom: 1px solid #cccccc;
+}
+
+ul.playlist li:last-child {
+    border-bottom: 0px solid #cccccc;
+}
+
+ul.playlist li a {
+    padding: 7px;
+    text-decoration: none;
+    display: block;
+    overflow: hidden;
+    color: #666;
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -ms-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+}
+
+ul.playlist li a:hover {
+    background: #dddddd;
+    -webkit-transition: all 0.3s ease-in;
+    -moz-transition: all 0.3s ease-in;
+    -ms-transition: all 0.3s ease-in;
+    -o-transition: all 0.3s ease-in;
+    transition: all 0.3s ease-in;
+    box-shadow: 0px 0px 2px #ccc inset;
+}
 
 .player-shadow {
-	position: absolute;
-	bottom: 0px;
-	left: 50%;
-	background: #000;
-	margin: 0 0 0 -40%;
-	height: 8px;
-	width: 80%;
-	z-index: 5;
-	border-radius: 50%;
-	-webkit-filter: blur(10px);
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    background: #000;
+    margin: 0 0 0 -40%;
+    height: 8px;
+    width: 80%;
+    z-index: 0;
+    border-radius: 50%;
+    -webkit-filter: blur(10px);
     filter: blur(10px);
+}
+
+.background-shadow {
+    width: 250px;
+    height: 250px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background: #fff;
+    margin: -125px 0 0 -125px;
+    z-index: -1;
+    border-radius: 50%;
+    -webkit-filter: blur(15px);
+    filter: blur(15px);
 }

@@ -1,50 +1,82 @@
 <!doctype html>
 <html>
 <head>
-	<title>Html5/Css3 Fancy Circle Music Player</title>
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
-	<script type="text/javascript" src="js/player.js"></script>
-	<link rel="stylesheet" type="text/css" href="css/player.css">
+    <title>Html5/Css3 Fancy Circle Music Player</title>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
+    <script type="text/javascript" src="js/player.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/player.css">
 </head>
 <body>
 
-	<div id="progress" style="height: 20px; position: relative;">
-		<div id="loaded" style="background-color: #CCCCCC; position: absolute; height: 20px;"></div>
-		<div id="played" style="background-color: #E3BA56; position: absolute; height: 20px"></div>
-	</div>
-	<input id="position" style="width: 100%" type="range" min="0" max="100" step="0.1" value="0" />
+    <div id="progress" style="height: 20px; position: relative;">
+        <div id="loaded" style="background-color: #CCCCCC; position: absolute; height: 20px;"></div>
+        <div id="played" style="background-color: #E3BA56; position: absolute; height: 20px"></div>
+    </div>
+    <input id="position" style="width: 100%" type="range" min="0" max="100" step="0.1" value="0" />
 
-	<h1>Fancy Circle <span>Music Player</span></h1>
+    <h1>Fancy Circle <span>Music Player</span></h1>
 
-	<div class="player-holder">
-		<div class="player">
-			<div class="player-background">
-				<a href="#" class="play" title="Play">
-					<span>play</span>
-				</a>
-			</div>
-		</div>
-		<div class="controls">
-			<a href="#" class="volume-show" title="Show Volume">
-				<i class="icon-volume-up-1"></i>
-			</a>
- 			<a href="#" class="playlist-show" title="Show Playlist">
-				<i class="icon-note"></i>
-			</a>
-			<div class="volume-holder">
-				<input id="volume" type="range" min="0" max="1" step= "0.1" value="0.8"  class="volume"/>
-				<a href="#" class="volume-icon normal" id="mute">
-					<i class="icon-volume-off-1"></i>
-					<i class="icon-volume-up-1"></i>
-				</a>
- 			</div>
- 		</div>
-		<!-- Player bottom shadow -->
-		<div class="player-shadow"></div>
-	</div>
+    <div class="player-holder">
+        <div class="player">
+            <div class="player-background">
+                <a href="#" class="action" title="play/pause">
+                    <i class="icon-play"></i>
+                    <i class="icon-pause"></i>
+                </a>
+            </div>
+        </div>
+        <div class="controls">
+            <a href="#" class="volume-show" title="Show Volume">
+                <i class="icon-volume-up-1"></i>
+            </a>
+             <a href="#" class="playlist-show" title="Show Playlist">
+                <i class="icon-note"></i>
+            </a>
+            <div class="volume-holder">
+                <input id="volume" type="range" min="0" max="1" step= "0.1" value="0.8"  class="volume"/>
+                <a href="#" class="volume-icon normal" id="mute">
+                    <i class="icon-volume-off-1"></i>
+                    <i class="icon-volume-up-1"></i>
+                </a>
+             </div>
+             <div class="playlist-holder">
+                 <div class="playlist-header">
+                     <h4>My Playlist</h4>
+                 </div>
+                 <ul class="playlist">
+                     <li>
+                         <a href="">I tebe cu proliti veceras</a>
+                     </li>
+                     <li>
+                         <a href="">Niko kao ti Srbijo moja</a>
+                     </li>
+                     <li>
+                         <a href="">Baraba</a>
+                     </li>
+                     <li>
+                         <a href="">Zasto me ostavi</a>
+                     </li>
+                     <li>
+                         <a href="">I tebe cu proliti veceras</a>
+                     </li>
+                     <li>
+                         <a href="">Niko kao ti Srbijo moja</a>
+                     </li>
+                     <li>
+                         <a href="">Baraba</a>
+                     </li>
+                     <li>
+                         <a href="">Zasto me ostavi</a>
+                     </li>
+                 </ul>
+             </div>
+         </div>
+        <!--Player bottom shadow -->
+        <div class="player-shadow"></div>
+    </div>
 
-	<audio id="player"></audio>
+    <audio id="player"></audio>
 
-	<div class="background-shadow"></div>
+    <div class="background-shadow"></div>
 </body>
 </html>
