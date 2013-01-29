@@ -118,9 +118,9 @@ h1 span {
     display: block;
     overflow: hidden;
     position: absolute;
-    top: 27%;
-    left: 50px;
-    font-size: 4em;
+    top: 21%;
+    left: 40px;
+    font-size: 5em;
     color: #999999;
 }
 .icon-play {
