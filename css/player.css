@@ -126,6 +126,9 @@ h1 span {
 .icon-play {
     margin-left: 0.1em;
 }
+.icon-pause {
+	display: none;
+}
 
 .icon-play:hover,
 .icon-pause:hover {

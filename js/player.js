@@ -7,7 +7,7 @@ $(document).ready( function () {
         player.setAttribute('src', playlist[playlistPosition].url);
         player.volume= "0.8";
 
-    $('.play').toggle ( function () {
+    $('.action').toggle ( function () {
                             player.play();
                         },
                         function () {
