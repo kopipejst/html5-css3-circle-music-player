@@ -322,3 +322,10 @@ ul.playlist li a:hover {
     -webkit-filter: blur(15px);
     filter: blur(15px);
 }
+
+
+.active {
+    background-color: pink;
+}
+
+
