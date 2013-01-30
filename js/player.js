@@ -3,6 +3,8 @@ $(document).ready(function() {
     var player = $('#player').get(0),
         playlistPosition = 0;
 
+    PLAYLIST = [];
+
 
     player.setAttribute('src', playlist[playlistPosition].url);
     player.volume = "0.8";
@@ -95,12 +97,18 @@ $(document).ready(function() {
 
 
     $('#fileInput').change(function(e) {
-        FILES = e.target.files;
-        for (var i in FILES) {
-            var li = $('<li />').data('id', i).text(FILES[i].name);
-            $('.playlist').append(li);
+        var files = e.target.files;
+        var count = 0;
+        $('.playlist').html('');
+        for (var i in files) {
+            if (files[i].name && files[i].name.indexOf('mp3') != -1) {
+                var li = $('<li />').data('id', count).text(files[i].name);
+                $('.playlist').append(li);
+                PLAYLIST.push(files[i]);
+                count++;
+            }
         }
-        var url = window.webkitURL.createObjectURL(FILES[0]);
+        var url = window.webkitURL.createObjectURL(files[0]);
         player.setAttribute('src', url);
         player.play();
 
@@ -108,7 +116,7 @@ $(document).ready(function() {
 
     $('.playlist').delegate('li', 'click', function() {
         var id = $(this).data('id');
-        var file = FILES[id];
+        var file = PLAYLIST[id];
         $('.playlist li').removeClass('active');
         $(this).addClass('active');
         var url = window.webkitURL.createObjectURL(file);
