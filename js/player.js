@@ -3,15 +3,31 @@ $(document).ready(function() {
     var player = $('#player').get(0),
         playlistPosition = 0;
 
+    PLAYLIST = [];
+
 
     player.setAttribute('src', playlist[playlistPosition].url);
     player.volume = "0.8";
 
     $('.action').toggle(function() {
-        player.play();
+		play();
     }, function() {
-        player.pause();
+		pause();
     });
+
+
+
+    function play () {
+        player.play();
+        $('.icon-play').hide();
+        $('.icon-pause').show();
+    }
+
+    function pause () {
+        player.pause();
+        $('.icon-play').show();
+        $('.icon-pause').hide();
+    }
 
 
     $('.volume-show').click(function() {
@@ -85,37 +101,48 @@ $(document).ready(function() {
     });
 
     player.addEventListener('ended', function(evt) {
+		pause();
         playlistPosition++;
-        if (playlistPosition >= playlist.length) {
+        if (playlistPosition >= PLAYLIST.length) {
             playlistPosition = 0;
         }
-        player.setAttribute('src', playlist[playlistPosition].url);
-        player.play();
+        loadSong(playlistPosition);
+        play();
     });
 
 
     $('#fileInput').change(function(e) {
-        FILES = e.target.files;
-        for (var i in FILES) {
-            var li = $('<li />').data('id', i).text(FILES[i].name);
-            $('.playlist').append(li);
+        var files = e.target.files;
+        var count = 0;
+        $('.playlist').html('');
+        PLAYLIST = [];
+        for (var i in files) {
+            if (files[i].name && files[i].name.indexOf('mp3') != -1) {
+                var li = $('<li />').data('id', count).text(files[i].name);
+                $('.playlist').append(li);
+                PLAYLIST.push(files[i]);
+                count++;
+            }
         }
-        var url = window.webkitURL.createObjectURL(FILES[0]);
-        player.setAttribute('src', url);
-        player.play();
+        $('.playlist li:first').addClass('active');
+        loadSong(0);
+        play();
 
     });
 
     $('.playlist').delegate('li', 'click', function() {
         var id = $(this).data('id');
-        var file = FILES[id];
         $('.playlist li').removeClass('active');
         $(this).addClass('active');
-        var url = window.webkitURL.createObjectURL(file);
-        player.setAttribute('src', url);
-        player.play();
+        loadSong(id);
+        play();
     });
 
+    function loadSong (id) {
+		var file = PLAYLIST[id];
+		var url = window.webkitURL.createObjectURL(file);
+		player.setAttribute('src', url);
+    }
 
 
 });
