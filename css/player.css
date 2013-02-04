@@ -245,6 +245,41 @@ input[type='range']::-webkit-slider-thumb {
 .playlist-header h4 {
     color: #333333;
     margin: 14px 15px 12px 15px;
+    float: left;
+}
+
+.upload-list {
+    float: right;
+    width: 60px;
+    position: relative;
+    display: inline-block;
+    margin: 8px 12px 0px 0px;
+    cursor: pointer;
+}
+
+.upload-list::-webkit-file-upload-button {
+    visibility: hidden;
+}
+.upload-list:before {
+    content: 'Upload';
+    background: -webkit-linear-gradient(top, #f5f5f5, #dddddd);
+    border: 1px solid #999;
+    border-radius: 3px;
+    padding: 5px 8px;
+    outline: none;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 12px;
+    color: #333;
+    float: left;
+}
+.upload-list:hover:before {
+    border-color: #666;
+}
+.upload-list:active:before {
+    background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
 }
 
 ul.playlist {
@@ -327,5 +362,3 @@ ul.playlist li a:hover {
 .active {
     background-color: pink;
 }
-
-
