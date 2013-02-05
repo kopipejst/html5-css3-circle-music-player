@@ -30,6 +30,8 @@
 .icon-volume-off-1:before { content: '\e801'; } /* '' */
 .icon-volume-up-1:before { content: '\e800'; } /* '' */
 
+* { box-sizing:border-box; }
+
 body {
     background: #dddddd;
     font-family: "helvetica", arial, serif;
@@ -54,18 +56,18 @@ h1 span {
     Layouts
  */
 .player-holder {
-    width: 210px;
-    height: 210px;
+    width: 200px;
+    height: 200px;
     position: absolute;
     top: 50%;
     left: 50%;
-    margin: -110px 0 0 -110px;
+    margin: -100px 0 0 -100px;
     z-index: 50;
 }
 
 .player {
-    width: 190px;
-    height: 190px;
+    width: 200px;
+    height: 200px;
     position: relative;
     background: #F5BE3D;
     border-radius: 50%;
@@ -75,8 +77,8 @@ h1 span {
 }
 
 .player-background {
-    width: 190px;
-    height: 190px;
+    width: 180px;
+    height: 180px;
     background: #DDDDDD;
     border-radius: 50%;
 }
@@ -90,8 +92,8 @@ h1 span {
     Controls
  */
 .action {
-    width: 160px;
-    height: 160px;
+    width: 150px;
+    height: 150px;
     position: absolute;
     top: 25px;
     left: 25px;
@@ -119,7 +121,7 @@ h1 span {
     overflow: hidden;
     position: absolute;
     top: 21%;
-    left: 40px;
+    left: 35px;
     font-size: 5em;
     color: #999999;
 }
@@ -129,7 +131,7 @@ h1 span {
 }
 
 .icon-pause {
-	display: none;
+    display: none;
 }
 
 .icon-play:hover,
@@ -146,7 +148,7 @@ h1 span {
     position: absolute;
     top: 44%;
     height: 60px;
-    width: 330px;
+    width: 320px;
     left: -60px;
     border-radius: 30px;
     margin-top: -20px;
@@ -167,7 +169,7 @@ h1 span {
     font-size: 32px;
     color: #999999;
     position: absolute;
-    top: 11px;
+    top: 10px;
     right: 15px;
 }
 
@@ -232,6 +234,7 @@ input[type='range']::-webkit-slider-thumb {
 }
 
 .playlist-holder {
+    display: none;
     position: absolute;
     right: -189px;
     top: -83px;
