@@ -4,15 +4,21 @@
     <title>Html5/Css3 Fancy Circle Music Player</title>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
     <script type="text/javascript" src="js/player.js"></script>
-    <link rel="stylesheet" type="text/css" href="css/player.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
 
-    <div id="progress" style="height: 20px; position: relative;">
-        <div id="loaded" style="background-color: #CCCCCC; position: absolute; height: 20px;"></div>
-        <div id="played" style="background-color: #E3BA56; position: absolute; height: 20px"></div>
-    </div>
+
     <input id="position" style="width: 100%" type="range" min="0" max="100" step="0.1" value="0" />
+
+
+<div id="progress" class="progress">
+    <div id="loaded" style="background-color: #CCCCCC; position: absolute; height: 20px;"></div>
+    <div id="played" style="background-color: #E3BA56; position: absolute; height: 20px"></div>
+</div>
+
+
+
 
     <h1>Fancy Circle <span>Music Player</span></h1>
 
@@ -42,6 +48,7 @@
              <div class="playlist-holder">
                  <div class="playlist-header">
                      <h4>My Playlist</h4>
+                     <input id="fileInput" class="upload-list" type="file" webkitdirectory directory />
                  </div>
                  <ul class="playlist">
 
@@ -51,9 +58,7 @@
         <!--Player bottom shadow -->
         <div class="player-shadow"></div>
     </div>
-
-    <input id="fileInput" type="file" webkitdirectory directory />    
-
+ 
     <audio id="player"></audio>
 
     <div class="background-shadow"></div>

@@ -5,7 +5,6 @@ $(document).ready(function() {
 
     PLAYLIST = [];
 
-
     //player.setAttribute('src', playlist[playlistPosition].url);
     player.volume = "0.8";
 
@@ -80,6 +79,12 @@ $(document).ready(function() {
         $('#mute').removeClass('mute').addClass('normal');
     }
 
+
+    $('.playlist-show').click(function() {
+        $('.playlist-holder').show();
+    });
+
+
     $('#position').change(function() {
         var position = player.duration * $(this).val() / 100;
         player.currentTime = position;
@@ -115,13 +120,14 @@ $(document).ready(function() {
         var files = e.target.files;
         var count = 0;
         $('.playlist').html('');
+
         PLAYLIST = [];
         for (var i in files) {
             if (files[i].name && files[i].name.indexOf('mp3') != -1) {
-            	//var text = files[i].webkitRelativePath.split("/");
-            	//text = text[text.length - 1].replace('.mp3','') + " - " + text[text.length - 2];
-            	var text = files[i].name;
-            	var text = files[i].webkitRelativePath.replace(/\//g,' - ').replace('.mp3','');
+                //var text = files[i].webkitRelativePath.split("/");
+                //text = text[text.length - 1].replace('.mp3','') + " - " + text[text.length - 2];
+                //var text = files[i].name;
+                var text = files[i].webkitRelativePath.replace(/\//g,' - ').replace('.mp3','');
                 var li = $('<li />').data('id', count).text(text);
                 $('.playlist').append(li);
                 PLAYLIST.push(files[i]);
@@ -132,10 +138,15 @@ $(document).ready(function() {
         loadSong(0);
         play();
 
+        var url = window.webkitURL.createObjectURL(files[0]);
+        player.setAttribute('src', url);
+        player.play();
+
     });
 
     $('.playlist').delegate('li', 'click', function() {
         var id = $(this).data('id');
+        var file = PLAYLIST[id];
         $('.playlist li').removeClass('active');
         $(this).addClass('active');
         loadSong(id);
