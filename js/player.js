@@ -6,7 +6,7 @@ $(document).ready(function() {
     PLAYLIST = [];
 
 
-    player.setAttribute('src', playlist[playlistPosition].url);
+    //player.setAttribute('src', playlist[playlistPosition].url);
     player.volume = "0.8";
 
     $('.action').toggle(function() {
@@ -118,7 +118,11 @@ $(document).ready(function() {
         PLAYLIST = [];
         for (var i in files) {
             if (files[i].name && files[i].name.indexOf('mp3') != -1) {
-                var li = $('<li />').data('id', count).text(files[i].name);
+            	//var text = files[i].webkitRelativePath.split("/");
+            	//text = text[text.length - 1].replace('.mp3','') + " - " + text[text.length - 2];
+            	var text = files[i].name;
+            	var text = files[i].webkitRelativePath.replace(/\//g,' - ').replace('.mp3','');
+                var li = $('<li />').data('id', count).text(text);
                 $('.playlist').append(li);
                 PLAYLIST.push(files[i]);
                 count++;
@@ -147,13 +151,3 @@ $(document).ready(function() {
 
 });
 
-
-var playlist = [{
-    "title": "Die Antwoord - I Fink U Freeky",
-    "url": "audio/02 I Fink U Freeky.mp3"
-}, {
-    "title": "Everlast - White Trash Beautiful",
-    "url": "http://workshop.rs/projects/roundplayer/03%20White%20Trash%20Beautiful.mp3"
-}
-
-];
