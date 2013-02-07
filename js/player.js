@@ -20,6 +20,7 @@ $(document).ready(function() {
         player.play();
         $('.icon-play').hide();
         $('.icon-pause').show();
+        $('.controls').addClass('active');
     }
 
     function pause () {

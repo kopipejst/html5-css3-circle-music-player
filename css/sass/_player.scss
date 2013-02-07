@@ -27,6 +27,7 @@
 .icon-pause:before { content: '\2389'; } /* '⎉' */
 .icon-play:before { content: '\25b6'; } /* '▶' */
 .icon-note:before { content: '\266a'; } /* '♪' */
+.icon-cancel:before { content: '\2715'; } /* '✕' */
 .icon-shuffle:before { content: '🔀'; } /* '\1f500' */
 .icon-repeat:before { content: '🔁'; } /* '\1f501' */
 .icon-volume-off-1:before { content: '\e801'; } /* '' */
@@ -102,61 +103,60 @@ h1 span {
     background: #ffffff;
     border-radius: 50%;
     border: 1px solid #F5BE3D;
-    -webkit-transition: all 0.5s ease-in-out;
-    -moz-transition: all 0.5s ease-in-out;
-    -ms-transition: all 0.5s ease-in-out;
-    -o-transition: all 0.5s ease-in-out;
-    transition: all 0.5s ease-in-out;
+    @include transition(all 0.5s ease-in-out);
+
+    &:hover {
+        box-shadow: 0px 0px 50px #dddddd inset;
+    }
+
+    &:focus {
+        box-shadow: 0px 0px 10px #dddddd inset;
+    }
 }
 
-.action:hover {
-    box-shadow: 0px 0px 50px #dddddd inset;
-}
-
-.action:focus {
-    box-shadow: 0px 0px 10px #dddddd inset;
-}
-
-.icon-play,
-.icon-pause {
+%play-pause {
     display: block;
     overflow: hidden;
     position: absolute;
     top: 21%;
     left: 35px;
     font-size: 5em;
+    @include transition(all 0.5s ease-in-out);
+}
+
+// Play
+.icon-play {
+    @extend %play-pause;
+    margin-left: 0.1em;
+    color: #F5BE3D;
+    text-shadow: 0px 0px 1px #000 inset;
+}
+
+// Pause
+.icon-pause {
+    @extend %play-pause;
+    display: none;
     color: #999999;
 }
 
-.icon-play {
-    margin-left: 0.1em;
-}
-
-.icon-pause {
-    display: none;
-}
-
-.icon-play:hover,
-.icon-pause:hover {
-    -webkit-transition: all 0.5s ease-in-out;
-    -moz-transition: all 0.5s ease-in-out;
-    -ms-transition: all 0.5s ease-in-out;
-    -o-transition: all 0.5s ease-in-out;
-    transition: all 0.5s ease-in-out;
-    border-color: transparent transparent transparent #CAA54E;
-}
 
 .controls {
     position: absolute;
     top: 44%;
     height: 60px;
-    width: 320px;
-    left: -60px;
+    width: 0px;
+    left: 110px;
     border-radius: 30px;
     margin-top: -20px;
     background: #ffffff;
     z-index: 30;
     border: 2px solid #F5BE3D;
+    -webkit-transition: left 0.5s ease-in, width 0.5s ease-in;
+}
+
+.controls.active {
+    width: 320px;
+    left: -60px;
 }
 
 .volume-show {
@@ -176,7 +176,6 @@ h1 span {
 }
 
 .volume-holder {
-    -webkit-transform: rotate(-90deg);
     position: absolute;
     left: -79px;
     top: 10px;
@@ -185,8 +184,9 @@ h1 span {
     border-radius: 20px;
     height: 34px;
     width: 220px;
-    display: none;
     z-index: 60;
+    display: none;
+    -webkit-transform: rotate(-90deg);
 }
 
 .volume-icon {
@@ -248,19 +248,22 @@ input[type='range']::-webkit-slider-thumb {
     z-index: 60;
 }
 
-.playlist-header h4 {
-    color: #333333;
-    margin: 14px 15px 12px 15px;
-    float: left;
+.playlist-header {
+    h4 {
+        color: #666666;
+        margin: 14px 15px 12px 15px;
+        float: left;
+    }
 }
 
 .upload-list {
     float: right;
-    width: 60px;
+    width: 56px;
     height: 26px;
     position: relative;
     display: inline-block;
-    margin: 9px 10px 0px 0px;
+    bottom: 3px;
+    right: 10px;
     cursor: pointer;
 }
 
@@ -297,21 +300,19 @@ ul.playlist {
     padding: 0px;
     list-style: none;
     overflow-y: auto;
-    width: 218px;
-    height: 165px;
+    width: 220px;
+    height: 135px;
     margin: 10px;
     font-size: 13px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    position: absolute;
-    bottom: 0px;
     background: #ededed;
     box-shadow: 0px 1px 1px #ccc inset;
 }
 
 ul.playlist li {
     border-bottom: 1px solid #cccccc;
-    padding: 5px;
+    padding: 6px 5px;
 }
 
 ul.playlist li:last-child {
@@ -335,33 +336,22 @@ ul.playlist li a:hover {
 
 
 %aditional-buttons {
-    background: white;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    box-shadow: 0px 0px 3px #666666;
-    position: absolute;
-    bottom: 25px;
-    z-index: 50;
     color: #999999;
-
-    i {
-        position: absolute;
-        top: 12px;
-        left: 10px;
-    }
+    @include transition(all 0.3s ease-in);
+    width: 30px;
+    height: 20px;
+    position: relative;
+    left: 10px;
+    float: left;
+    font-size: 20px;
 }
 
 .shuffle {
-    left: -5px;
     @extend %aditional-buttons;
-    @include transition(all 0.3s ease-in);
 }
 
 .repeat {
-    right: -5px;
     @extend %aditional-buttons;
-    @include transition(all 0.3s ease-in);
 }
 
 
