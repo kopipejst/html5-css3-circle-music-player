@@ -27,6 +27,8 @@
 .icon-pause:before { content: '\2389'; } /* '⎉' */
 .icon-play:before { content: '\25b6'; } /* '▶' */
 .icon-note:before { content: '\266a'; } /* '♪' */
+.icon-shuffle:before { content: '🔀'; } /* '\1f500' */
+.icon-repeat:before { content: '🔁'; } /* '\1f501' */
 .icon-volume-off-1:before { content: '\e801'; } /* '' */
 .icon-volume-up-1:before { content: '\e800'; } /* '' */
 
@@ -236,7 +238,7 @@ input[type='range']::-webkit-slider-thumb {
 .playlist-holder {
     display: none;
     position: absolute;
-    right: -189px;
+    right: -193px;
     top: -83px;
     background: #ffffff;
     box-shadow: 0px 0px 4px #999;
@@ -322,22 +324,50 @@ ul.playlist li a {
     display: block;
     overflow: hidden;
     color: #666;
-    -webkit-transition: all 0.3s ease-out;
-    -moz-transition: all 0.3s ease-out;
-    -ms-transition: all 0.3s ease-out;
-    -o-transition: all 0.3s ease-out;
-    transition: all 0.3s ease-out;
+    @include transition(all 0.3s ease-in);
 }
 
 ul.playlist li a:hover {
     background: #dddddd;
-    -webkit-transition: all 0.3s ease-in;
-    -moz-transition: all 0.3s ease-in;
-    -ms-transition: all 0.3s ease-in;
-    -o-transition: all 0.3s ease-in;
-    transition: all 0.3s ease-in;
+    @include transition(all 0.3s ease-in);
     box-shadow: 0px 0px 2px #ccc inset;
 }
+
+
+%aditional-buttons {
+    background: white;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    box-shadow: 0px 0px 3px #666666;
+    position: absolute;
+    bottom: 25px;
+    z-index: 50;
+    color: #999999;
+
+    i {
+        position: absolute;
+        top: 12px;
+        left: 10px;
+    }
+}
+
+.shuffle {
+    left: -5px;
+    @extend %aditional-buttons;
+    @include transition(all 0.3s ease-in);
+}
+
+.repeat {
+    right: -5px;
+    @extend %aditional-buttons;
+    @include transition(all 0.3s ease-in);
+}
+
+
+
+
+
 
 .player-shadow {
     position: absolute;
