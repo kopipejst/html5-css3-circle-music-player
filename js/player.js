@@ -4,6 +4,9 @@ $(document).ready(function() {
         playlistPosition = 0;
 
     PLAYLIST = [];
+    SHUFFLE = false;
+    REPEAT = false;
+    CURRENT = 0;
 
     //player.setAttribute('src', playlist[playlistPosition].url);
     player.volume = "0.8";
@@ -44,17 +47,6 @@ $(document).ready(function() {
         } else {
             unmute();
         }
-    });
-
-    $('.volume-show').mouseover(function() {
-        $('.volume-holder').show();
-        //clearTimeout(t);
-    });
-
-    $('.volume-holder').mouseleave(function() {
-        //t = setTimeout( function () {
-        $('.volume-holder').hide();
-        //}, 2000);
     });
 
     $('#mute').click(function() {
@@ -110,11 +102,15 @@ $(document).ready(function() {
 
     player.addEventListener('ended', function(evt) {
 		pause();
-        playlistPosition++;
-        if (playlistPosition >= PLAYLIST.length) {
-            playlistPosition = 0;
+        if (SHUFFLE) {
+            CURRENT = parseInt(Math.random() * PLAYLIST.length + 1);
+        } else {
+            CURRENT++;
         }
-        loadSong(playlistPosition);
+        if (CURRENT >= PLAYLIST.length) {
+            CURRENT = 0;
+        }
+        loadSong(CURRENT);
         play();
     });
 
@@ -145,6 +141,14 @@ $(document).ready(function() {
         player.setAttribute('src', url);
         player.play();
 
+    });
+
+    $('.shuffle').click ( function () {
+        SHUFFLE = true;
+    });
+
+    $('.repeat').click ( function () {
+        REPEAT = true;
     });
 
     $('.playlist').delegate('li', 'click', function() {
