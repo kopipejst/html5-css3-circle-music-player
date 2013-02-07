@@ -14,13 +14,15 @@ $(document).ready(function() {
 		pause();
     });
 
+    $('.action').hover(function() {
+        $('.controls').addClass('active');
+    });
 
 
     function play () {
         player.play();
         $('.icon-play').hide();
         $('.icon-pause').show();
-        $('.controls').addClass('active');
     }
 
     function pause () {
@@ -136,7 +138,7 @@ $(document).ready(function() {
             }
         }
         $('.playlist li:first').addClass('active');
-        loadSong(0);
+        loadSong(1);
         play();
 
         var url = window.webkitURL.createObjectURL(files[0]);
