@@ -100,13 +100,14 @@ h1 span {
     border-radius: 50%;
     @include transition(all 0.5s ease-in-out);
     z-index: 100;
+    box-shadow: 0 0 0px #ddd inset, 0 0 2px #666;
 
     &:hover {
-        box-shadow: 0px 0px 50px #dddddd inset;
+        box-shadow: 0 0 20px #dddddd inset, 0 0 5px #666;
     }
 
     &:focus {
-        box-shadow: 0px 0px 10px #dddddd inset;
+        box-shadow: 0 0 10px #dddddd inset, 0 0 3px #666;
     }
 }
 
