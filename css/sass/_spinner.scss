@@ -21,6 +21,8 @@ $demo-content-display: none; /* Set "block" to see we can make content on the sp
     height: 100%;
     -webkit-transform-origin: 100% 50%;
     position: absolute;
+    top: 1px;
+    left: 1px;
     background: $background-color;
 }
 
