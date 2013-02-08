@@ -151,11 +151,11 @@ h1 span {
     z-index: 30;
     border: 2px solid #F5BE3D;
     -webkit-transition: left 0.5s ease-in, width 0.5s ease-in;
-}
 
-.controls.active {
-    width: 320px;
-    left: -60px;
+    &.active {
+        width: 320px;
+        left: -60px;
+    }
 }
 
 .volume-show {
@@ -176,16 +176,19 @@ h1 span {
 
 .volume-holder {
     position: absolute;
-    left: -79px;
+    left: -77px;
     top: 10px;
     background: #ffffff;
     box-shadow: 0px 0px 4px #999;
     border-radius: 20px;
-    height: 34px;
+    height: 32px;
     width: 220px;
     z-index: 60;
     display: none;
     -webkit-transform: rotate(-90deg);
+
+    &.active {
+    }
 }
 
 .volume-icon {
@@ -234,8 +237,8 @@ input[type='range']::-webkit-slider-thumb {
     cursor: pointer;
 }
 
+
 .playlist-holder {
-    display: none;
     position: absolute;
     right: -193px;
     top: -83px;
@@ -245,7 +248,12 @@ input[type='range']::-webkit-slider-thumb {
     height: 220px;
     width: 240px;
     z-index: 60;
+    display: none;
+
+    &.active {
+    }
 }
+
 
 .playlist-header {
     h4 {
@@ -258,7 +266,7 @@ input[type='range']::-webkit-slider-thumb {
 .upload-list {
     float: right;
     width: 83px;
-    height: 26px;
+    height: 25px;
     position: relative;
     display: inline-block;
     top: 10px;
