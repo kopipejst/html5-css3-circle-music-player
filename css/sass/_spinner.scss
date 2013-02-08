@@ -50,7 +50,7 @@ $demo-content-display: none; /* Set "block" to see we can make content on the sp
   left: 50%;
   opacity: 0;
   z-index: 100;
-  -webkit-animation: opa $animation-duration steps(1,end) infinite reverse;
+  //-webkit-animation: opa $animation-duration steps(1,end) infinite reverse;
   border-left: none;
 }
 
@@ -61,7 +61,7 @@ $demo-content-display: none; /* Set "block" to see we can make content on the sp
   background: inherit;
   opacity: 1;
   z-index: 50;
-  -webkit-animation: opa $animation-duration steps(1,end) infinite;
+  //-webkit-animation: opa $animation-duration steps(1,end) infinite;
   @include border-radius(100% 0 0 100%/50% 0 0 50%);
 }
 
