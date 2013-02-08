@@ -9,9 +9,11 @@ $(document).ready(function() {
 
     player.volume = "0.8";
 
-    $('.action').toggle(function() {
+    $('.action').toggle(function(e) {
+        e.stopPropagate();
 		play();
-    }, function() {
+    }, function(e) {
+        e.stopPropagate();
 		pause();
     });
 
@@ -216,7 +218,23 @@ $(document).ready(function() {
 
     $('.player-holder').mousemove ( function (e) {
         if(REWIND){
-            player.currentTime += 10;
+            var offset = $('.player-holder').offset();
+            center = {
+                top: offset.top + $('.player-holder').outerHeight() / 2,
+                left: offset.left + $('.player-holder').outerWidth() /2
+            };
+
+            a = center.left - e.pageX;
+            b = center.top - e.pageY;
+            //deg = Math.atan2(a,b);
+            deg = Math.atan2(a, b) * 180 / Math.PI;
+            if(deg<0){
+                deg = 360 + deg;
+            }
+            var degToPer = 100 * (360 - deg) / 360;
+            var position = player.duration * degToPer / 100;
+            player.currentTime = position;
+
         }
     });
 
@@ -231,10 +249,6 @@ $(document).ready(function() {
     
 
     function rewind () {
-        var offset = $('.player-holder').offset();
-        center = {
-            top: offset.top + $('.player-holder').outerHeight() / 2,
-            left: offset.left + $('.player-holder').outerWidth() /2
-        };
+
 
     }
