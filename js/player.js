@@ -10,10 +10,8 @@ $(document).ready(function() {
     player.volume = "0.8";
 
     $('.action').toggle(function(e) {
-        e.stopPropagate();
 		play();
     }, function(e) {
-        e.stopPropagate();
 		pause();
     });
 
@@ -210,18 +208,18 @@ $(document).ready(function() {
     }, 5000);
 
     REWIND = false;
-    $('.player-holder').mousedown( function (e) {
+    $('.player').mousedown( function (e) {
         e.preventDefault();
         REWIND = true;
         console.log(REWIND);
     });
 
-    $('.player-holder').mousemove ( function (e) {
+    $('.player').mousemove ( function (e) {
         if(REWIND){
-            var offset = $('.player-holder').offset();
+            var offset = $('.player').offset();
             center = {
-                top: offset.top + $('.player-holder').outerHeight() / 2,
-                left: offset.left + $('.player-holder').outerWidth() /2
+                top: offset.top + $('.player').outerHeight() / 2,
+                left: offset.left + $('.player').outerWidth() /2
             };
 
             a = center.left - e.pageX;
