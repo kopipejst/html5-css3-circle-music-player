@@ -171,7 +171,6 @@ $(document).ready(function() {
     function progress (percent) {
 
         var angle = percent*360/100;
-
         $('.spinner').css('-webkit-transform', 'rotate(' + angle + 'deg)');
         if(percent > 50) {
             $('.filler').css("opacity", "1");
