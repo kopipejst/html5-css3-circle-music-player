@@ -169,9 +169,8 @@ $(document).ready(function() {
     });
 
     function progress (percent) {
-        console.log(percent);
+
         var angle = percent*360/100;
-                console.log(angle);
 
         $('.spinner').css('-webkit-transform', 'rotate(' + angle + 'deg)');
         if(percent > 50) {
@@ -190,6 +189,24 @@ $(document).ready(function() {
         $('.playlist li').removeClass('active');
         $('.playlist li:nth-child(' + (parseInt(id) + 1) + ')').addClass('active');
     }
+
+    MOUSEPOSITION = {};
+    MOUSEPOSTITONOLD = {};
+
+    $(document).mousemove( function(e) {
+        MOUSEPOSITION.x = e.pageX;
+        MOUSEPOSITION.y = e.pageY;
+    });
+
+    var t = setInterval( function () {
+        if (MOUSEPOSITION.x == MOUSEPOSTITONOLD.x && MOUSEPOSITION.y == MOUSEPOSTITONOLD.y) {
+            $('.playlist-holder').hide();
+            $('.volume-holder').hide();
+        } else {
+            MOUSEPOSITION.x = MOUSEPOSTITONOLD.x;
+            MOUSEPOSITION.y = MOUSEPOSTITONOLD.y;
+        }
+    }, 1000);
 
 
 });
