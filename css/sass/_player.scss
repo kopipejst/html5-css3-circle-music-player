@@ -81,12 +81,6 @@ h1 span {
     box-shadow: 0px 1px 1px #fff;
 }
 
-.player-background {
-    width: 180px;
-    height: 180px;
-    background: #DDDDDD;
-    border-radius: 50%;
-}
 
 /*
     Animations
@@ -104,8 +98,8 @@ h1 span {
     left: 25px;
     background: #ffffff;
     border-radius: 50%;
-    border: 1px solid #F5BE3D;
     @include transition(all 0.5s ease-in-out);
+    z-index: 100;
 
     &:hover {
         box-shadow: 0px 0px 50px #dddddd inset;

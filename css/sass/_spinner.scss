@@ -1,41 +1,34 @@
 /* Variables : your settings */
 
 $animation-duration: 10s;
-$size: 250px; /* Any unit */
-$background-color: #08C; /* No gradients */
-$border: 5px solid #232323; /* Set "none" if you don't want */
-$hover-play-state: paused; /* Set "running" if you don't want to pause the animation on hover */
+$size: 180px; /* Any unit */
+$background-color: #DE620A; /* No gradients */
 $demo-content-display: none; /* Set "block" to see we can make content on the spinner and watch it rotates */
 
 /* Don't change anything below this point */
 
-.wrapper {
-  width: $size;
-  height: $size;
-  position: relative;
-  background: #dddddd;
+.player-background {
+    width: $size;
+    height: $size;
+    background: #dddddd;
+    @include border-radius(50%);
+    position: relative;
+
 }
 
 .pie {
-  width: 50%;
-  height: 100%;
-  -webkit-transform-origin: 100% 50%;
-  position: absolute;
-  background: $background-color;
-  border: $border;
+    width: 50%;
+    height: 100%;
+    -webkit-transform-origin: 100% 50%;
+    position: absolute;
+    background: $background-color;
 }
 
 .spinner {
   border-radius: 100% 0 0 100% / 50% 0 0 50%;
-  z-index: 200;
+  z-index: 20;
   border-right: none;
   //-webkit-animation: rota $animation-duration linear infinite;
-}
-
-.wrapper:hover .spinner,
-.wrapper:hover .filler,
-.wrapper:hover .mask {
-    -webkit-animation-play-state: $hover-play-state;
 }
 
 .spinner:after {
@@ -57,7 +50,7 @@ $demo-content-display: none; /* Set "block" to see we can make content on the sp
   left: 50%;
   opacity: 0;
   z-index: 100;
-  //-webkit-animation: opa $animation-duration steps(1,end) infinite reverse;
+  -webkit-animation: opa $animation-duration steps(1,end) infinite reverse;
   border-left: none;
 }
 
@@ -67,8 +60,9 @@ $demo-content-display: none; /* Set "block" to see we can make content on the sp
   position: absolute;
   background: inherit;
   opacity: 1;
-  z-index: 300;
-  //-webkit-animation: opa $animation-duration steps(1,end) infinite;
+  z-index: 50;
+  -webkit-animation: opa $animation-duration steps(1,end) infinite;
+  @include border-radius(100% 0 0 100%/50% 0 0 50%);
 }
 
 
