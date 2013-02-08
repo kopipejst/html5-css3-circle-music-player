@@ -174,11 +174,11 @@ $(document).ready(function() {
         $('.spinner').css('-webkit-transform', 'rotate(' + angle + 'deg)');
         if(percent > 50) {
             $('.filler').css("opacity", "1");
-            $('.mask').css("opacity", "0");   
+            $('.mask').css("opacity", "0");
         } else {
             $('.filler').css("opacity", "0");
-            $('.mask').css("opacity", "1"); 
-        }   
+            $('.mask').css("opacity", "1");
+        }
     }
 
     function loadSong (id) {
@@ -205,8 +205,36 @@ $(document).ready(function() {
             MOUSEPOSITION.x = MOUSEPOSTITONOLD.x;
             MOUSEPOSITION.y = MOUSEPOSTITONOLD.y;
         }
-    }, 1000);
+    }, 5000);
+
+    REWIND = false;
+    $('.player-holder').mousedown( function (e) {
+        e.preventDefault();
+        REWIND = true;
+        console.log(REWIND);
+    });
+
+    $('.player-holder').mousemove ( function (e) {
+        if(REWIND){
+            player.currentTime += 10;
+        }
+    });
+
+    $(document).mouseup( function () {
+        REWIND = false;
+        console.log(REWIND);
+    });
 
 
 });
 
+    
+
+    function rewind () {
+        var offset = $('.player-holder').offset();
+        center = {
+            top: offset.top + $('.player-holder').outerHeight() / 2,
+            left: offset.left + $('.player-holder').outerWidth() /2
+        };
+
+    }
