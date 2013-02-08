@@ -1,14 +1,12 @@
 $(document).ready(function() {
 
-    var player = $('#player').get(0),
-        playlistPosition = 0;
+    var player = $('#player').get(0);
 
     PLAYLIST = [];
     SHUFFLE = false;
     REPEAT = false;
     CURRENT = 0;
 
-    //player.setAttribute('src', playlist[playlistPosition].url);
     player.volume = "0.8";
 
     $('.action').toggle(function() {
@@ -100,6 +98,14 @@ $(document).ready(function() {
         }
     });
 
+    player.addEventListener('loadedmetadata', function(evt) {
+        console.log('load');
+        var duration = player.duration + "s";
+        $('.spinner').attr("style", "-webkit-animation: rota " + duration + " linear infinite");
+        $('.filler').attr("style", "-webkit-animation: opa " + duration + " steps(1,end) infinite reverse");
+        $('.mask').attr("style", "-webkit-animation: opa " + duration + " steps(1,end) infinite");
+    });
+
     player.addEventListener('ended', function(evt) {
 		pause();
         if (SHUFFLE) {
@@ -133,29 +139,30 @@ $(document).ready(function() {
                 count++;
             }
         }
-        $('.playlist li:first').addClass('active');
-        loadSong(1);
+
+        loadSong(0);
         play();
 
-        var url = window.webkitURL.createObjectURL(files[0]);
-        player.setAttribute('src', url);
-        player.play();
-
     });
 
-    $('.shuffle').click ( function () {
+    $('.shuffle').toggle ( function () {
         SHUFFLE = true;
+        $(this).addClass('active');
+    }, function () {
+        SHUFFLE = false;
+        $(this).removeClass('active');
     });
 
-    $('.repeat').click ( function () {
+    $('.repeat').toggle ( function () {
         REPEAT = true;
+        $(this).addClass('active');
+    }, function () {
+        REPEAT = false;
+        $(this).removeClass('active');
     });
 
     $('.playlist').delegate('li', 'click', function() {
         var id = $(this).data('id');
-        var file = PLAYLIST[id];
-        $('.playlist li').removeClass('active');
-        $(this).addClass('active');
         loadSong(id);
         play();
     });
@@ -164,6 +171,8 @@ $(document).ready(function() {
 		var file = PLAYLIST[id];
 		var url = window.webkitURL.createObjectURL(file);
 		player.setAttribute('src', url);
+        $('.playlist li').removeClass('active');
+        $('.playlist li:nth-child(' + (parseInt(id) + 1) + ')').addClass('active');
     }
 
 
