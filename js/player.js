@@ -87,6 +87,7 @@ $(document).ready(function() {
         var played = player.currentTime / player.duration * 100;
         $("#played").css("width", played + "%");
         $("#position").val(played);
+        progress(played);
     });
 
     player.addEventListener('progress', function(evt) {
@@ -100,10 +101,10 @@ $(document).ready(function() {
 
     player.addEventListener('loadedmetadata', function(evt) {
         console.log('load');
-        var duration = player.duration + "s";
-        $('.spinner').attr("style", "-webkit-animation: rota " + duration + " linear infinite");
-        $('.filler').attr("style", "-webkit-animation: opa " + duration + " steps(1,end) infinite reverse");
-        $('.mask').attr("style", "-webkit-animation: opa " + duration + " steps(1,end) infinite");
+        // var duration = player.duration + "s";
+        // $('.spinner').attr("style", "-webkit-animation: rota " + duration + " linear infinite");
+        // $('.filler').attr("style", "-webkit-animation: opa " + duration + " steps(1,end) infinite reverse");
+        // $('.mask').attr("style", "-webkit-animation: opa " + duration + " steps(1,end) infinite");
     });
 
     player.addEventListener('ended', function(evt) {
@@ -166,6 +167,21 @@ $(document).ready(function() {
         loadSong(id);
         play();
     });
+
+    function progress (percent) {
+        console.log(percent);
+        var angle = percent*360/100;
+                console.log(angle);
+
+        $('.spinner').css('-webkit-transform', 'rotate(' + angle + 'deg)');
+        if(percent > 50) {
+            $('.filler').css("opacity", "1");
+            $('.mask').css("opacity", "0");   
+        } else {
+            $('.filler').css("opacity", "0");
+            $('.mask').css("opacity", "1"); 
+        }   
+    }
 
     function loadSong (id) {
 		var file = PLAYLIST[id];
