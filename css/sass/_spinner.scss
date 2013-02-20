@@ -28,21 +28,6 @@ $background-color: #DE620A; /* No gradients */
   -webkit-transform: rotate(0deg);
 }
 
-.spinner-cursor {
-    position: absolute;
-    height: 16px;
-    width: 16px;
-    background-color: #f5f5f5;
-    background-repeat: repeat-x;
-    background: -webkit-linear-gradient(top, #dddddd, #ffffff, #dddddd);
-    border: 1px solid #ffffff;
-    @include box-shadow(0px 0px 2px #666666);
-    @include border-radius(50%);
-    cursor: pointer;
-    top: -1px;
-    right: -6px;
-}
-
 .filler {
   border-radius: 0 100% 100% 0 / 0 50% 50% 0;
   left: 50%;
