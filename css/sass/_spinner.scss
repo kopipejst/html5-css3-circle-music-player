@@ -22,14 +22,14 @@ $background-color: #DE620A; /* No gradients */
 }
 
 .spinner {
-  border-radius: 100% 0 0 100% / 50% 0 0 50%;
+  @include border-radius(100% 0 0 100% / 50% 0 0 50%);
   z-index: 20;
   border-right: none;
-  -webkit-transform: rotate(0deg);
+  @include transform(rotate(0deg));
 }
 
 .filler {
-  border-radius: 0 100% 100% 0 / 0 50% 50% 0;
+  @include border-radius(0 100% 100% 0 / 0 50% 50% 0);
   left: 50%;
   opacity: 0;
   z-index: 100;
@@ -37,9 +37,11 @@ $background-color: #DE620A; /* No gradients */
 }
 
 .mask {
-  width: 50%;
-  height: 100%;
+  width: 51%;
+  height: 101%;
   position: absolute;
+  top: -1px;
+  left: -1px;
   background: inherit;
   opacity: 1;
   z-index: 50;
