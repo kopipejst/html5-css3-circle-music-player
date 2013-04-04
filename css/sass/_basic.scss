@@ -1,0 +1,68 @@
+* {
+    @include box-sizing(border-box);
+}
+
+body {
+    background: #dddddd;
+    font-family: "helvetica", arial, serif;
+    margin: 0px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 2.8em;
+    color: #CC6724;
+    text-transform: uppercase;
+    letter-spacing: -2px;
+}
+
+h1 span {
+    color: #444444;
+    font-size: 0.6em;
+    letter-spacing: -1px;
+}
+
+
+.footer {
+    background:#333333;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+
+    .download {
+        width: 140px;
+        padding: 10px 15px;
+        color: #333333;
+        background: #F5BE3D;
+        font-size: 14px;
+        text-decoration: none;
+        text-shadow: 0px 1px 1px #ffffff;
+        float: right;
+        text-align: center;
+        @include border-radius(3px);
+    }
+    .github {
+        width: 140px;
+        padding: 10px 15px;
+        color: #333333;
+        background: #ffffff;
+        font-size: 14px;
+        text-decoration: none;
+        text-shadow: 0px 1px 1px #ffffff;
+        float: right;
+        text-align: center;
+        @include border-radius(3px);
+        margin: 0 10px;
+    }
+    p {
+        float: left;
+        color: #999999;
+        font-size: 13px;
+        font-weight: normal;
+
+        a {
+            color: #ffffff;
+        }
+    }
+}
