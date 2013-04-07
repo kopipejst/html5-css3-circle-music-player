@@ -1,5 +1,12 @@
 $(document).ready(function() {
 
+    if (!isInputDirSupported()) {
+        $('.player-holder').hide();
+        $('.not-supported').show();
+        return false;
+    }
+
+
     PLAYER = $('#player').get(0);
 
     PLAYLIST = [];
@@ -191,12 +198,12 @@ function notify(message) {
     if (window.webkitNotifications.checkPermission() === 0) {
         var notification = window.webkitNotifications.createNotification('', 'Round Player', message);
         notification.show();
+        setTimeout(function() {
+            notification.cancel();
+        }, 5000);
     } else {
         window.webkitNotifications.requestPermission();
     }
-    setTimeout(function() {
-        notification.cancel();
-    }, 5000);
 }
 
 /**
@@ -306,3 +313,14 @@ function unmute() {
     $('#mute').removeClass('mute').addClass('normal');
 }
 
+/**
+ * Check if browser support webkitdirectory
+ * @return {Boolean} [description]
+ */
+function isInputDirSupported() {
+    var tmpInput = document.createElement('input');
+    if ('webkitdirectory' in tmpInput){
+        return true;
+    }
+    return false;
+}
