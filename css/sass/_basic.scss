@@ -66,3 +66,13 @@ h1 span {
         }
     }
 }
+
+.not-supported {
+    display:none;
+    width: 640px;
+    margin: 0px auto;
+    background: #fff;
+    @include border-radius(10px);
+    border: 1px solid #cccccc;
+    padding: 10px 20px;
+}
