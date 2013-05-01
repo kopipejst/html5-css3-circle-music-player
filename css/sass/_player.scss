@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 /****************************************************************
     Circle Music Player
 *****************************************************************/
@@ -244,7 +246,7 @@ input[type='range']::-webkit-slider-thumb {
 }
 
 .upload-list:before {
-    content: 'Add Playlist';
+    content: 'Add Folder';
     background: #F5BE3D;
     @include border-radius(3px);
     padding: 5px 8px;
