@@ -1,0 +1,444 @@
+@charset "UTF-8";
+* {
+  box-sizing: border-box; }
+
+body {
+  background: #dddddd;
+  font-family: "helvetica", arial, serif;
+  margin: 0px; }
+
+h1 {
+  text-align: center;
+  font-size: 2.8em;
+  color: #CC6724;
+  text-transform: uppercase;
+  letter-spacing: -2px; }
+
+h1 span {
+  color: #444444;
+  font-size: 0.6em;
+  letter-spacing: -1px; }
+
+.footer {
+  background: #333333;
+  padding: 10px;
+  position: fixed;
+  bottom: 0;
+  width: 100%; }
+  .footer .download {
+    width: 140px;
+    padding: 10px 15px;
+    color: #333333;
+    background: #F5BE3D;
+    font-size: 14px;
+    text-decoration: none;
+    text-shadow: 0px 1px 1px #ffffff;
+    float: right;
+    text-align: center;
+    border-radius: 3px; }
+  .footer .github {
+    width: 140px;
+    padding: 10px 15px;
+    color: #333333;
+    background: #ffffff;
+    font-size: 14px;
+    text-decoration: none;
+    text-shadow: 0px 1px 1px #ffffff;
+    float: right;
+    text-align: center;
+    border-radius: 3px;
+    margin: 0 10px; }
+  .footer p {
+    float: left;
+    color: #999999;
+    font-size: 13px;
+    font-weight: normal; }
+    .footer p a {
+      color: #ffffff; }
+
+.not-supported {
+  display: none;
+  width: 640px;
+  margin: 0px auto;
+  background: #fff;
+  border-radius: 10px;
+  border: 1px solid #cccccc;
+  padding: 10px 20px; }
+
+/****************************************************************
+    Circle Music Player
+*****************************************************************/
+@font-face {
+  font-family: 'fontello';
+  src: url("../../fonts/fontello.eot");
+  src: url("../../fonts/fontello.woff") format("woff"), url("../../fonts/fontello.ttf") format("truetype"), url("../../fonts/fontello.svg#fontello") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+[class^="icon-"]:before,
+[class*=" icon-"]:before {
+  font-family: 'fontello';
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+  display: inline-block;
+  text-decoration: inherit;
+  margin-right: 0.2em;
+  margin-left: 0.2em;
+  text-align: center;
+  opacity: 0.8;
+  line-height: 1em; }
+
+.icon-pause:before {
+  content: '\2389'; }
+
+/* '⎉' */
+.icon-play:before {
+  content: '\25b6'; }
+
+/* '▶' */
+.icon-note:before {
+  content: '\266a'; }
+
+/* '♪' */
+.icon-cancel:before {
+  content: '\2715'; }
+
+/* '✕' */
+.icon-shuffle:before {
+  content: '\1f500'; }
+
+/* '🔀' */
+.icon-repeat:before {
+  content: '\1f501'; }
+
+/* '🔁' */
+.icon-volume-off-1:before {
+  content: '\e801'; }
+
+/* '' */
+.icon-volume-up-1:before {
+  content: '\e800'; }
+
+/* '' */
+/*
+    Layouts
+ */
+.player-holder {
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -100px 0 0 -100px;
+  z-index: 50; }
+
+.player {
+  width: 200px;
+  height: 200px;
+  position: relative;
+  background: #F5BE3D;
+  border-radius: 50%;
+  padding: 10px;
+  z-index: 40;
+  box-shadow: 0px 1px 1px #fff; }
+
+/*
+    Controls
+ */
+.action {
+  width: 150px;
+  height: 150px;
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  background: #ffffff;
+  border-radius: 50%;
+  transition: all 0.5s ease-in-out;
+  z-index: 100;
+  box-shadow: 0 0 0px #ddd inset, 0 0 2px #666; }
+  .action:hover {
+    box-shadow: 0 0 20px #dddddd inset, 0 0 5px #666; }
+  .action:focus {
+    box-shadow: 0 0 10px #dddddd inset, 0 0 3px #666; }
+
+.icon-play, .icon-pause {
+  display: block;
+  overflow: hidden;
+  position: absolute;
+  top: 21%;
+  left: 35px;
+  font-size: 5em;
+  transition: all 0.5s ease-in-out; }
+
+.icon-play {
+  margin-left: 0.1em;
+  color: #F5BE3D;
+  text-shadow: 0px 0px 1px #000 inset; }
+
+.icon-pause {
+  display: none;
+  color: #999999; }
+
+.controls {
+  position: absolute;
+  top: 73px;
+  left: 110px;
+  height: 60px;
+  width: 0px;
+  border-radius: 30px;
+  background: #ffffff;
+  z-index: 30;
+  border: 2px solid #F5BE3D;
+  transition: left 0.5s ease-in, width 0.5s ease-in; }
+  .controls.active {
+    width: 320px;
+    left: -60px; }
+
+.volume-show {
+  font-size: 32px;
+  color: #999999;
+  position: absolute;
+  top: 11px;
+  left: 11px; }
+
+.playlist-show {
+  font-size: 32px;
+  color: #999999;
+  position: absolute;
+  top: 10px;
+  right: 15px; }
+
+.volume-holder {
+  position: absolute;
+  left: -77px;
+  top: 10px;
+  background: #ffffff;
+  box-shadow: 0px 0px 4px #999;
+  border-radius: 20px;
+  height: 32px;
+  width: 220px;
+  z-index: 60;
+  display: none;
+  transform: rotate(-90deg); }
+
+.volume-icon {
+  transform: rotate(90deg);
+  height: 23px;
+  width: 35px;
+  position: absolute;
+  bottom: 5px;
+  left: 6px;
+  font-size: 22px;
+  color: #999999;
+  text-shadow: 0px 1px 1px #fff;
+  text-align: center; }
+
+.mute .icon-volume-up-1,
+.normal .icon-volume-off-1 {
+  display: none; }
+
+.volume {
+  -webkit-appearance: none;
+  width: 160px;
+  height: 8px;
+  position: absolute;
+  border: 1px solid #ccc;
+  top: 10px;
+  left: 42px;
+  border-radius: 5px;
+  background-color: #f5f5f5;
+  background-repeat: repeat-x;
+  background: linear-gradient(right, #CE6924, #FFCC00, #ffffff);
+  cursor: pointer; }
+
+input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none !important;
+  background-color: #f5f5f5;
+  background-repeat: repeat-x;
+  background: linear-gradient(top, #dddddd, #ffffff, #dddddd);
+  height: 16px;
+  width: 16px;
+  border: 1px solid #ffffff;
+  box-shadow: 0px 0px 2px #666666;
+  border-radius: 50%;
+  cursor: pointer; }
+
+.playlist-holder {
+  position: absolute;
+  right: -193px;
+  top: -83px;
+  background: #ffffff;
+  box-shadow: 0px 0px 4px #999;
+  border-radius: 5px;
+  height: 220px;
+  width: 240px;
+  z-index: 60;
+  display: none; }
+
+.playlist-header h4 {
+  color: #666666;
+  margin: 14px 15px 12px 15px;
+  float: left; }
+
+.upload-list {
+  float: right;
+  width: 83px;
+  height: 25px;
+  position: relative;
+  display: inline-block;
+  top: 10px;
+  right: 10px;
+  cursor: pointer; }
+
+.upload-list::-webkit-file-upload-button {
+  visibility: hidden; }
+
+.upload-list:before {
+  content: 'Open Folder';
+  background: #F5BE3D;
+  border-radius: 3px;
+  padding: 5px 8px;
+  outline: none;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  cursor: pointer;
+  font-weight: normal;
+  font-size: 12px;
+  color: #fff;
+  float: left;
+  text-shadow: 0px 0px 1px #999; }
+
+.upload-list:hover:before {
+  background: #bbbbbb; }
+
+.upload-list:active:before {
+  background: #999999; }
+
+ul.playlist {
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+  overflow-y: auto;
+  width: 220px;
+  height: 135px;
+  margin: 10px;
+  font-size: 13px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background: #ededed;
+  box-shadow: 0px 1px 1px #ccc inset; }
+  ul.playlist li {
+    border-bottom: 1px solid #cccccc;
+    padding: 6px 5px; }
+    ul.playlist li a {
+      padding: 7px;
+      text-decoration: none;
+      display: block;
+      overflow: hidden;
+      color: #666;
+      transition: all 0.3s ease-in; }
+    ul.playlist li:hover {
+      background: #dddddd;
+      transition: all 0.3s ease-in;
+      box-shadow: 0px 0px 2px #ccc inset; }
+    ul.playlist li:last-child {
+      border-bottom: 0px solid #cccccc; }
+  ul.playlist .active {
+    background: #fff; }
+  ul.playlist .current {
+    background: #cccccc; }
+
+.shuffle, .repeat {
+  color: #999999;
+  transition: all 0.3s ease-in;
+  width: 30px;
+  height: 20px;
+  position: relative;
+  left: 10px;
+  float: left;
+  font-size: 20px; }
+
+.shuffle.active .icon-shuffle {
+  color: #F5BE3D; }
+
+.repeat.active .icon-repeat {
+  color: #F5BE3D; }
+
+.player-shadow {
+  position: absolute;
+  bottom: 0px;
+  left: 50%;
+  background: #000;
+  margin: 0 0 0 -40%;
+  height: 8px;
+  width: 80%;
+  z-index: 0;
+  border-radius: 50%;
+  filter: blur(10px); }
+
+.background-shadow {
+  width: 250px;
+  height: 250px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background: #fff;
+  margin: -125px 0 0 -125px;
+  z-index: -1;
+  border-radius: 50%;
+  filter: blur(15px); }
+
+/* Variables : your settings */
+/* Any unit */
+/* No gradients */
+/* Don't change anything below this point */
+.player-background {
+  width: 100%;
+  height: 100%;
+  background: #dddddd;
+  border-radius: 50%;
+  position: relative; }
+
+.pie {
+  width: 50%;
+  height: 100%;
+  -webkit-transform-origin: 100% 50%;
+  position: absolute;
+  background: #DE620A; }
+
+.spinner {
+  border-radius: 100% 0 0 100%/50% 0 0 50%;
+  z-index: 20;
+  border-right: none;
+  transform: rotate(0deg); }
+
+.filler {
+  border-radius: 0 100% 100% 0/0 50% 50% 0;
+  left: 50%;
+  opacity: 0;
+  z-index: 100;
+  border-left: none; }
+
+.mask {
+  width: 51%;
+  height: 101%;
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  background: inherit;
+  opacity: 1;
+  z-index: 50;
+  border-radius: 100% 0 0 100%/50% 0 0 50%; }
+
+@-webkit-keyframes rota {
+  0% {
+    -webkit-transform: rotate(0deg); }
+  100% {
+    -webkit-transform: rotate(360deg); } }
+
+@-webkit-keyframes opa {
+  0% {
+    opacity: 1; }
+  50%, 100% {
+    opacity: 0; } }

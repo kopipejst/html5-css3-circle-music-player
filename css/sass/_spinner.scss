@@ -9,7 +9,7 @@ $background-color: #DE620A; /* No gradients */
     width: $size;
     height: $size;
     background: #dddddd;
-    @include border-radius(50%);
+    border-radius:(50%);
     position: relative;
 }
 
@@ -22,14 +22,14 @@ $background-color: #DE620A; /* No gradients */
 }
 
 .spinner {
-  @include border-radius(100% 0 0 100% / 50% 0 0 50%);
+  border-radius:(100% 0 0 100% / 50% 0 0 50%);
   z-index: 20;
   border-right: none;
-  @include transform(rotate(0deg));
+  transform:(rotate(0deg));
 }
 
 .filler {
-  @include border-radius(0 100% 100% 0 / 0 50% 50% 0);
+  border-radius:(0 100% 100% 0 / 0 50% 50% 0);
   left: 50%;
   opacity: 0;
   z-index: 100;
@@ -45,7 +45,7 @@ $background-color: #DE620A; /* No gradients */
   background: inherit;
   opacity: 1;
   z-index: 50;
-  @include border-radius(100% 0 0 100%/50% 0 0 50%);
+  border-radius:(100% 0 0 100%/50% 0 0 50%);
 }
 
 
